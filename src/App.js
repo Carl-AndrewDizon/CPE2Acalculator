@@ -37,28 +37,37 @@ export default function App() {
 
   const equalClickHandler = (e) => {
     console.log('Num1 ' + num1 + ' | ' + 'Op ' + op + ' | ' + 'Num2 ' + num2);
+
+    let result = null;
+
     if (op === "ADD") {
-      setDisp(parseInt(num1) + parseInt(num2))
+      result = (parseInt(num1) + parseInt(num2))
     } else if (op === "SUB") {
-      setDisp(parseInt(num1) - parseInt(num2))
+      result = (parseInt(num1) - parseInt(num2))
     } else if (op === "MUL") {
-      setDisp(parseInt(num1) * parseInt(num2))
+      result = (parseInt(num1) * parseInt(num2))
     } else if (op === "DIV") {
       if (parseInt(num2) !==0) {
-        setDisp(parseInt(num1) / parseInt(num2));
+        result = (parseInt(num1) / parseInt(num2));
       } else{
-        setDisp("Cannot divided by 0")
+        result = ("Cannot divided by 0");
       }
     } else {
-      setDisp('Invalid Operation');
+      result = ('Invalid Operation');
     }
+
+    setDisp(result);
+    setNum1(result);
+    setNum2(null);
+    setOp(null);
   }
 
   const numberClickHandler = (e) => {
     e.preventDefault();
     const value  = e.target.innerHTML;
 
-    if (op === null) {
+    if (disp === 0 && value === '0'){
+    } else if ( op === null){
       if(num1 === null) {
         setNum1(value);
         setDisp(value);
@@ -92,22 +101,22 @@ export default function App() {
       <div className="CalcContainer">
         <CalcDisplay display={disp} />
         <div className="ButtonContainer">
-          <CalcButton label={"÷"} /*buttonClassName="OperatorButton"*/ onClick={opClickHandler} opbutton={'#d9e1f5'} bcolor={'#3e4859'}/>
+          <CalcButton label={"DIV"} /*buttonClassName="OperatorButton"*/ onClick={opClickHandler} opbutton={'#d9e1f5'} bcolor={'#3e4859'}/>
           <CalcButton label={7} onClick={numberClickHandler}/>
           <CalcButton label={8} onClick={numberClickHandler}/>
           <CalcButton label={9} onClick={numberClickHandler}/>
-          <CalcButton label={"x"} /*buttonClassName="OperatorButton"*/ onClick={opClickHandler} opbutton={'#d9e1f5'} bcolor={'#3e4859'}/>
+          <CalcButton label={"MUL"} /*buttonClassName="OperatorButton"*/ onClick={opClickHandler} opbutton={'#d9e1f5'} bcolor={'#3e4859'}/>
           <CalcButton label={4} onClick={numberClickHandler}/>
           <CalcButton label={5} onClick={numberClickHandler}/>
           <CalcButton label={6} onClick={numberClickHandler}/>
-          <CalcButton label={"+"} /*buttonClassName="OperatorButton"*/ onClick={opClickHandler} opbutton={'#d9e1f5'} bcolor={'#3e4859'}/>
+          <CalcButton label={"ADD"} /*buttonClassName="OperatorButton"*/ onClick={opClickHandler} opbutton={'#d9e1f5'} bcolor={'#3e4859'}/>
           <CalcButton label={1} onClick={numberClickHandler}/>
           <CalcButton label={2} onClick={numberClickHandler}/>
           <CalcButton label={3} onClick={numberClickHandler}/>
-          <CalcButton label={"-"} /*buttonClassName="OperatorButton"*/  onClick={opClickHandler} opbutton={'#d9e1f5'} bcolor={'#3e4859'}/>
+          <CalcButton label={"SUB"} /*buttonClassName="OperatorButton"*/  onClick={opClickHandler} opbutton={'#d9e1f5'} bcolor={'#3e4859'}/>
           <CalcButton label={"CLR"} onClick={clrClickHandler} opbutton={'#d88946'} bcolor={"#603a5e"}/>
           <CalcButton label={0} onClick={numberClickHandler}/>
-          <CalcButton label={"="} /*buttonClassName="OperatorButton"*/ onClick={equalClickHandler} opbutton={'#d9e1f5'} bcolor={'#304481'}/>
+          <CalcButton label={"EQ"} /*buttonClassName="OperatorButton"*/ onClick={equalClickHandler} opbutton={'#d9e1f5'} bcolor={'#304481'}/>
         </div>
       </div>
     </div>
