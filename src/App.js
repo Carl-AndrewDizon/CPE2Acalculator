@@ -37,10 +37,18 @@ export default function App() {
 
   const equalClickHandler = (e) => {
     console.log('Num1 ' + num1 + ' | ' + 'Op ' + op + ' | ' + 'Num2 ' + num2);
-    if (op === "+") {
+    if (op === "ADD") {
       setDisp(parseInt(num1) + parseInt(num2))
-    } else if (op === "-") {
+    } else if (op === "SUB") {
       setDisp(parseInt(num1) - parseInt(num2))
+    } else if (op === "MUL") {
+      setDisp(parseInt(num1) * parseInt(num2))
+    } else if (op === "DIV") {
+      if (parseInt(num2) !==0) {
+        setDisp(parseInt(num1) / parseInt(num2));
+      } else{
+        setDisp("Cannot divided by 0")
+      }
     } else {
       setDisp('Invalid Operation');
     }
