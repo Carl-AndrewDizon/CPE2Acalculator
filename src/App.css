@@ -1,5 +1,6 @@
 .App {
   box-sizing: border-box;
+  justify-content: center;
   text-align: center;
 }
 
